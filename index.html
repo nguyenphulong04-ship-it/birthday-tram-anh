@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Trâm Anh 🍓</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: "Segoe UI", Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd6e7,
+                    #fff0f6
+                );
+
+            color: #5a2942;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           TIM / STICKER BAY
+        ========================= */
+
+        .floating-heart {
+            position: fixed;
+
+            bottom: -60px;
+
+            font-size: 25px;
+
+            animation:
+                floatUp 6s linear infinite;
+
+            opacity: 0.7;
+
+            pointer-events: none;
+
+            z-index: 1;
+        }
+
+
+        @keyframes floatUp {
+
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           KHUNG CHÍNH
+        ========================= */
+
+        .container {
+            width: 92%;
+            max-width: 650px;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 50px
+                rgba(150, 50, 90, 0.18);
+
+            position: relative;
+
+            z-index: 2;
+
+            animation:
+                appear 0.7s ease;
+        }
+
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================
+           TIÊU ĐỀ
+        ========================= */
+
+        h1 {
+            color: #e94f88;
+
+            font-size: 36px;
+
+            margin:
+                0 0 18px 0;
+        }
+
+
+        h2 {
+            color: #df4d83;
+
+            font-size: 25px;
+
+            margin:
+                0 0 20px 0;
+        }
+
+
+        p {
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin:
+                0 0 15px 0;
+        }
+
+
+        .small-text {
+            font-size: 14px;
+
+            color: #999;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           NÚT
+        ========================= */
+
+        .start-button {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6f9f,
+                    #e94f88
+                );
+
+            color: white;
+
+            border: none;
+
+            padding:
+                16px 30px;
+
+            border-radius: 50px;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            margin-top: 12px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(233, 79, 136, 0.25);
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .start-button:hover {
+            transform:
+                translateY(-3px)
+                scale(1.03);
+        }
+
+
+        /* =========================
+           THANH TIẾN TRÌNH
+        ========================= */
+
+        .progress-container {
+            width: 100%;
+
+            height: 8px;
+
+            background: #f6dce7;
+
+            border-radius: 20px;
+
+            margin-bottom: 22px;
+
+            overflow: hidden;
+        }
+
+
+        .progress {
+            height: 100%;
+
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff78a8,
+                    #e94f88
+                );
+
+            transition:
+                width 0.4s ease;
+        }
+
+
+        /* =========================
+           ĐÁP ÁN
+        ========================= */
+
+        .answer-button {
+            width: 100%;
+
+            padding: 16px;
+
+            margin: 9px 0;
+
+            border-radius: 18px;
+
+            border:
+                2px solid #f4c5d7;
+
+            background: #fff8fb;
+
+            color: #633348;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            transition:
+                0.25s ease;
+
+            text-align: left;
+        }
+
+
+        .answer-button:hover {
+            transform:
+                translateX(5px);
+
+            border-color:
+                #ed76a1;
+
+            background:
+                #fff0f6;
+        }
+
+
+        /* ĐÁP ÁN ĐÚNG */
+
+        .answer-button.correct {
+            background:
+                #ffb6d0;
+
+            border-color:
+                #e94f88;
+
+            color:
+                #8e214d;
+
+            font-weight:
+                bold;
+
+            transform:
+                scale(1.02);
+        }
+
+
+        /* ĐÁP ÁN SAI */
+
+        .answer-button.wrong {
+            background:
+                #ffe0e7;
+
+            border-color:
+                #ff9aab;
+
+            color:
+                #a54b5d;
+        }
+
+
+        .answer-button.disabled {
+            cursor:
+                default;
+        }
+
+
+        /* =========================
+           PHẢN HỒI ĐÚNG / SAI
+        ========================= */
+
+        .feedback {
+            min-height: 58px;
+
+            margin-top: 15px;
+
+            padding: 13px;
+
+            border-radius: 15px;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            animation:
+                feedbackAppear
+                0.3s ease;
+        }
+
+
+        @keyframes feedbackAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+
+
+        .correct-feedback {
+            background:
+                #fff0f6;
+
+            color:
+                #d93f76;
+        }
+
+
+        .wrong-feedback {
+            background:
+                #fff1f2;
+
+            color:
+                #bd5265;
+        }
+
+
+        /* =========================
+           Ô NHẬP LỜI NHẮN
+        ========================= */
+
+        textarea {
+            width: 100%;
+
+            min-height: 150px;
+
+            resize: none;
+
+            border:
+                2px solid #f2bfd3;
+
+            border-radius: 18px;
+
+            padding: 17px;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            font-size: 16px;
+
+            outline: none;
+
+            margin-top: 10px;
+
+            color:
+                #633348;
+        }
+
+
+        textarea:focus {
+            border-color:
+                #e94f88;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(233, 79, 136, 0.1);
+        }
+
+
+        /* =========================
+           ẢNH CUỐI
+        ========================= */
+
+        .my-photo {
+            width: 220px;
+
+            height: 280px;
+
+            object-fit: cover;
+
+            border-radius: 25px;
+
+            margin:
+                15px auto 25px;
+
+            display: block;
+
+            border:
+                6px solid #ffd3e3;
+
+            box-shadow:
+                0 10px 30px
+                rgba(150, 50, 90, 0.2);
+        }
+
+
+        /* =========================
+           LỜI CHÚC
+        ========================= */
+
+        .wish {
+            text-align: left;
+
+            background:
+                #fff7fa;
+
+            border-radius: 20px;
+
+            padding: 22px;
+
+            margin-top: 20px;
+
+            font-size: 17px;
+        }
+
+
+        .wish p {
+            margin:
+                0 0 17px 0;
+
+            line-height:
+                1.75;
+        }
+
+
+        .wish p:last-child {
+            margin-bottom:
+                0;
+        }
+
+
+        .signature {
+            margin-top: 25px;
+
+            text-align: center;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            color:
+                #e94f88;
+
+            line-height:
+                1.8;
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            font-size: 18px;
+
+            color:
+                #df4d83;
+
+            margin:
+                20px 0;
+        }
+
+
+        .dots::after {
+            content: "";
+
+            animation:
+                dots 1.5s infinite;
+        }
+
+
+        @keyframes dots {
+
+            0% {
+                content: "";
+            }
+
+            33% {
+                content: ".";
+            }
+
+            66% {
+                content: "..";
+            }
+
+            100% {
+                content: "...";
+            }
+        }
+
+
+        /* =========================
+           ẨN
+        ========================= */
+
+        .hidden {
+            display:
+                none;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 600px) {
+
+            .container {
+                padding:
+                    25px 20px;
+            }
+
+
+            h1 {
+                font-size:
+                    29px;
+            }
+
+
+            h2 {
+                font-size:
+                    23px;
+            }
+
+
+            p {
+                font-size:
+                    16px;
+            }
+
+
+            .answer-button {
+                font-size:
+                    16px;
+
+                padding:
+                    15px;
+            }
+
+
+            .my-photo {
+                width:
+                    180px;
+
+                height:
+                    230px;
+            }
+
+
+            .wish {
+                font-size:
+                    16px;
+
+                padding:
+                    18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     STICKER BAY
+========================= -->
+
+<div class="floating-heart"
+     style="left: 8%; animation-delay: 0s;">
+    ❤️
+</div>
+
+<div class="floating-heart"
+     style="left: 25%; animation-delay: 2s;">
+    💗
+</div>
+
+<div class="floating-heart"
+     style="left: 70%; animation-delay: 1s;">
+    🍓
+</div>
+
+<div class="floating-heart"
+     style="left: 90%; animation-delay: 3s;">
+    🌸
+</div>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         MÀN HÌNH MỞ ĐẦU
+    ========================== -->
+
+    <div id="start">
+
+        <div style="font-size: 60px;">
+            🎂
+        </div>
+
+
+        <h1>
+            Happy Birthday ❤️
+        </h1>
+
+
+        <p>
+            Anh có một bài kiểm tra nhỏ
+            dành riêng cho em.
+        </p>
+
+
+        <p>
+            Chủ đề hôm nay là:
+            <strong>
+                "Anh hiểu em đến đâu?" 😏
+            </strong>
+        </p>
+
+
+        <p class="small-text">
+            Không được hỏi Google.
+            Không được gọi điện hỏi bạn thân.
+            Và đặc biệt...
+            không được gian lận 😌
+        </p>
+
+
+        <button
+            class="start-button"
+            onclick="startGame()">
+
+            Bắt đầu thôi ❤️
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================
+         PHẦN TRẮC NGHIỆM
+    ========================== -->
+
+    <div id="quiz"
+         class="hidden">
+
+
+        <div class="progress-container">
+
+            <div
+                id="progress"
+                class="progress">
+            </div>
+
+        </div>
+
+
+        <p
+            id="question-number"
+            class="small-text">
+        </p>
+
+
+        <h2
+            id="question">
+        </h2>
+
+
+        <div
+            id="answers">
+        </div>
+
+
+        <div
+            id="feedback"
+            class="feedback">
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         CÂU HỎI CUỐI
+    ========================== -->
+
+    <div id="final"
+         class="hidden">
+
+
+        <div style="font-size: 55px;">
+            💌
+        </div>
+
+
+        <h2>
+            Câu hỏi cuối cùng
+        </h2>
+
+
+        <p>
+            Những câu trên là những điều
+            anh muốn biết về em.
+        </p>
+
+
+        <p>
+            Nhưng câu này thì khác...
+        </p>
+
+
+        <p>
+            <strong>
+                Nếu hôm nay em được gửi
+                cho anh một lời nhắn,
+                em muốn nói gì?
+            </strong>
+        </p>
+
+
+        <textarea
+            id="message"
+            placeholder="Viết điều em muốn nói với anh ở đây... ❤️">
+        </textarea>
+
+
+        <button
+            class="start-button"
+            onclick="submitMessage()">
+
+            Gửi cho anh ❤️
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================
+         MÀN HÌNH ĐANG GỬI
+    ========================== -->
+
+    <div id="loading"
+         class="hidden">
+
+
+        <div style="font-size: 55px;">
+            💌
+        </div>
+
+
+        <h2>
+            Đang gửi lời nhắn
+            <span class="dots"></span>
+        </h2>
+
+
+        <p>
+            Anh đang mở thư...
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         MÀN HÌNH LỜI CHÚC
+    ========================== -->
+
+    <div id="resultScreen"
+         class="hidden">
+
+
+        <div style="font-size: 60px;">
+            🎉
+        </div>
+
+
+        <h1>
+            Happy Birthday Trâm Anh 🍓
+        </h1>
+
+
+        <!--
+        ===================================
+        ẢNH CỦA BẠN
+
+        Đặt ảnh vào:
+
+        images/anh-cua-anh.jpg
+
+        ===================================
+        -->
+
+        <img
+            src="images/anh-cua-anh.jpg"
+            class="my-photo"
+            alt="Một bức ảnh đặc biệt">
+
+
+        <div class="wish">
+
+
+            <p>
+                Nhân một ngày đặc biệt,
+                với tất cả sự chân thành của anh,
+                anh chúc em sẽ luôn vui vẻ
+                như những bông hoa mùa xuân,
+                luôn rạng rỡ và tràn đầy năng lượng
+                như ánh nắng mùa hạ,
+                luôn dịu dàng, bình yên
+                và có thật nhiều những khoảnh khắc
+                đẹp như mùa thu,
+                và luôn được yêu thương,
+                che chở, ấm áp
+                như những ngày mùa đông.
+            </p>
+
+
+            <p>
+                Anh chúc cho mỗi ngày của em
+                đều có thêm một điều gì đó thật đẹp,
+                một niềm vui mới,
+                một điều bất ngờ nho nhỏ
+                và một lý do để mỉm cười.
+            </p>
+
+
+            <p>
+                Chúc cho những điều em mong muốn,
+                kể cả ước mơ có thật nhiều tiền
+                💰😌,
+                cũng từng bước trở thành hiện thực.
+            </p>
+
+
+            <p>
+                Chúc cho em có thật nhiều
+                những chuyến đi,
+                được đặt chân đến những nơi
+                em muốn đến,
+                ăn những món em yêu thích
+                và có thật nhiều kỷ niệm đẹp
+                trên hành trình của mình.
+            </p>
+
+
+            <p>
+                Tuổi mới,
+                mong em sẽ có thật nhiều niềm vui,
+                thật nhiều hạnh phúc,
+                thật nhiều những chuyến đi,
+                thật nhiều những điều em yêu thích,
+                và mỗi ngày trôi qua
+                lại có thêm một điều mới
+                khiến em cảm thấy
+                mình đang rất hạnh phúc.
+            </p>
+
+
+            <p>
+                Chúc em một tuổi mới
+                thật rực rỡ,
+                thật nhiều yêu thương
+                và thật nhiều điều tốt đẹp.
+            </p>
+
+
+            <div class="signature">
+
+                ❤️ Happy Birthday, Trâm Anh 🍓 ❤️
+
+                <br>
+
+                ♡ From someone who really cares about you ♡
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =================================================
+       DANH SÁCH CÂU HỎI
+    ================================================= */
+
+
+    const questions = [
+
+
+        /* CÂU 1 */
+
+        {
+
+            question:
+                "Nếu ngày mai được xách vali đi ngay, em muốn đi đâu nhất? ✈️",
+
+            answers: [
+
+                {
+                    text:
+                        "✈️ Đi một nơi thật xa để khám phá",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "🌲 Đà Lạt — lạnh một chút cho có cảm giác",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🏙️ Một thành phố thật nhộn nhịp",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🏠 Ở nhà — du lịch bằng Google Maps",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "✈️ Đúng rồi! Anh biết cô gái này thích những chuyến đi mà ❤️",
+
+            wrongMessage:
+                "😏 Sai rồi nha! Có vẻ anh phải đưa em đi du lịch nhiều hơn rồi."
+
+        },
+
+
+        /* CÂU 2 */
+
+        {
+
+            question:
+                "Ước mơ hơi thực tế của em là gì? 💰",
+
+            answers: [
+
+                {
+                    text:
+                        "💰 Có thật nhiều tiền",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "🏆 Trở thành người nổi tiếng nhất thế giới",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🧘 Có một cuộc sống thật bình yên",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🐱 Mở một trang trại mèo",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "💰 Chính xác! Ước mơ rất giản dị: chỉ cần... thật nhiều tiền thôi 😌",
+
+            wrongMessage:
+                "😂 Sai rồi! Ước mơ thật sự còn thực tế hơn thế nhiều."
+
+        },
+
+
+        /* CÂU 3 */
+
+        {
+
+            question:
+                "Nếu đang buồn và cần một chút 'chữa lành', em sẽ chọn món nào? 🍰",
+
+            answers: [
+
+                {
+                    text:
+                        "🍰 Bánh tiramisu",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "🍜 Một bát phở",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🍗 Gà rán",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🥗 Salad cho healthy",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "🍰 Đúng! Buồn có thể chưa hết, nhưng tiramisu chắc chắn phải hết trước 😌❤️",
+
+            wrongMessage:
+                "😂 Không phải rồi. Đồ ngọt mới là chân ái!"
+
+        },
+
+
+        /* CÂU 4 */
+
+        {
+
+            question:
+                "Màu nào có khả năng khiến em vui hơn một chút? 🌸",
+
+            answers: [
+
+                {
+                    text:
+                        "💗 Hồng",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "💙 Xanh",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🖤 Đen",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "💚 Xanh lá",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "💗 Chuẩn luôn! Một câu hỏi quá dễ đối với anh 😌",
+
+            wrongMessage:
+                "🌸 Sai rồi! Hint to thế mà vẫn không nhận ra màu hồng à?"
+
+        },
+
+
+        /* CÂU 5 */
+
+        {
+
+            question:
+                "Thứ gì có thể khiến em chạy nhanh hơn cả lúc nhìn thấy đồ ăn yêu thích? 🐭",
+
+            answers: [
+
+                {
+                    text:
+                        "🐭 Một con chuột",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "🦎 Một con thằn lằn",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🕷️ Một con nhện",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🪳 Một con gián",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "🐭 Đúng! Kẻ thù truyền kiếp đã xuất hiện 😂",
+
+            wrongMessage:
+                "😏 Không phải. Nhưng anh nghĩ đáp án đúng đang khiến em hơi... nổi da gà."
+
+        },
+
+
+        /* CÂU 6 */
+
+        {
+
+            question:
+                "Nếu được chọn một ngày hoàn hảo, em thích điều gì nhất? 🌷",
+
+            answers: [
+
+                {
+                    text:
+                        "✈️ Đi đâu đó thật xa",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "🍰 Ăn đồ ngọt cả ngày",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🛍️ Mua mọi thứ mình thích",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "😴 Ngủ đến chiều",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "🌷 Đúng rồi. Một chuyến đi, một chút tự do và thật nhiều niềm vui ❤️",
+
+            wrongMessage:
+                "😂 Cũng hấp dẫn đấy, nhưng hình như vẫn thiếu một thứ: được đi đâu đó thật vui!"
+
+        },
+
+
+        /* CÂU 7 — DÂU */
+
+        {
+
+            question:
+                "Nếu hôm nay phải chọn một loại quả để xuất hiện thật nhiều trong ngày sinh nhật Trâm Anh, em chọn quả gì? 🍓",
+
+            answers: [
+
+                {
+                    text:
+                        "🍓 Dâu tây — tất nhiên rồi!",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "🍉 Dưa hấu — cho mát",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🍊 Cam — cho nhiều vitamin",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🍌 Chuối — vì không biết chọn gì",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "🍓 Chính xác! Hôm nay Trâm Anh và quả dâu chính thức chiếm sóng ❤️",
+
+            wrongMessage:
+                "😂 Sai rồi! Hôm nay mà không có dâu thì hình như vẫn còn thiếu thiếu gì đó..."
+
+        },
+
+
+        /* CÂU 8 */
+
+        {
+
+            question:
+                "Câu cuối trước khi nhận quà: ai là người may mắn nhất hôm nay? 😌",
+
+            answers: [
+
+                {
+                    text:
+                        "👸 Em — vì hôm nay là sinh nhật em",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "🤵 Anh — vì được chúc mừng em",
+                    correct: false
+                },
+
+                {
+                    text:
+                        "❤️ Cả hai",
+                    correct: true
+                },
+
+                {
+                    text:
+                        "🎂 Cái bánh — vì được ăn đầu tiên",
+                    correct: false
+                }
+
+            ],
+
+            correctMessage:
+                "❤️ Đúng rồi. Vì có em và có anh thì mới thành câu chuyện này.",
+
+            wrongMessage:
+                "😂 Câu này anh cho em làm lại trong đầu nhé..."
+
+        }
+
+    ];
+
+
+
+    /* =================================================
+       BIẾN
+    ================================================= */
+
+
+    let currentQuestion = 0;
+
+    let answered = false;
+
+
+
+    /* =================================================
+       BẮT ĐẦU GAME
+    ================================================= */
+
+
+    function startGame() {
+
+        document
+            .getElementById("start")
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById("quiz")
+            .classList
+            .remove("hidden");
+
+
+        showQuestion();
+
+    }
+
+
+
+    /* =================================================
+       HIỆN CÂU HỎI
+    ================================================= */
+
+
+    function showQuestion() {
+
+        answered = false;
+
+
+        const question =
+            questions[currentQuestion];
+
+
+        document
+            .getElementById("question")
+            .innerText =
+            question.question;
+
+
+        document
+            .getElementById("question-number")
+            .innerText =
+            `Câu ${currentQuestion + 1}
+             / ${questions.length}`;
+
+
+        const progress =
+            (currentQuestion /
+            questions.length) * 100;
+
+
+        document
+            .getElementById("progress")
+            .style
+            .width =
+            progress + "%";
+
+
+        const answersDiv =
+            document
+                .getElementById("answers");
+
+
+        answersDiv.innerHTML = "";
+
+
+        const feedback =
+            document
+                .getElementById("feedback");
+
+
+        feedback.innerHTML = "";
+
+
+        feedback.className =
+            "feedback";
+
+
+        question.answers.forEach(
+            (answer, index) => {
+
+
+                const button =
+                    document
+                        .createElement("button");
+
+
+                button.className =
+                    "answer-button";
+
+
+                button.innerText =
+                    answer.text;
+
+
+                button.onclick =
+                    () => chooseAnswer(index);
+
+
+                answersDiv
+                    .appendChild(button);
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       CHỌN ĐÁP ÁN
+    ================================================= */
+
+
+    function chooseAnswer(index) {
+
+        if (answered) return;
+
+
+        answered = true;
+
+
+        const question =
+            questions[currentQuestion];
+
+
+        const buttons =
+            document
+                .querySelectorAll(
+                    ".answer-button"
+                );
+
+
+        const selected =
+            question.answers[index];
+
+
+        /* Tô màu đáp án đúng */
+
+        question.answers.forEach(
+            (answer, i) => {
+
+                if (answer.correct) {
+
+                    buttons[i]
+                        .classList
+                        .add("correct");
+
+                }
+
+            }
+        );
+
+
+        /* Nếu chọn sai */
+
+        if (!selected.correct) {
+
+            buttons[index]
+                .classList
+                .add("wrong");
+
+        }
+
+
+        /* Khóa nút */
+
+        buttons.forEach(
+            button => {
+
+                button.disabled =
+                    true;
+
+                button.classList
+                    .add("disabled");
+
+            }
+        );
+
+
+        /* Hiện phản hồi */
+
+        const feedback =
+            document
+                .getElementById(
+                    "feedback"
+                );
+
+
+        if (selected.correct) {
+
+            feedback.classList
+                .add(
+                    "correct-feedback"
+                );
+
+            feedback.innerText =
+                question.correctMessage;
+
+        } else {
+
+            feedback.classList
+                .add(
+                    "wrong-feedback"
+                );
+
+            feedback.innerText =
+                question.wrongMessage;
+
+        }
+
+
+        /* 
+        Chờ 2,5 giây
+        rồi mới sang câu tiếp theo
+        */
+
+        setTimeout(
+            nextQuestion,
+            2500
+        );
+
+    }
+
+
+
+    /* =================================================
+       CÂU TIẾP THEO
+    ================================================= */
+
+
+    function nextQuestion() {
+
+        currentQuestion++;
+
+
+        if (
+            currentQuestion
+            <
+            questions.length
+        ) {
+
+            showQuestion();
+
+        } else {
+
+            document
+                .getElementById("quiz")
+                .classList
+                .add("hidden");
+
+
+            document
+                .getElementById("final")
+                .classList
+                .remove("hidden");
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       GỬI LỜI NHẮN
+    ================================================= */
+
+
+    async function submitMessage() {
+
+
+        const message =
+            document
+                .getElementById("message")
+                .value
+                .trim();
+
+
+        if (!message) {
+
+            alert(
+                "Em chưa viết gì cho anh cả 🥺"
+            );
+
+            return;
+
+        }
+
+
+        /* Hiện màn hình đang gửi */
+
+        document
+            .getElementById("final")
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById("loading")
+            .classList
+            .remove("hidden");
+
+
+        /*
+        ==========================================
+        FORM ENDPOINT
+
+        Sau khi tạo Formspree,
+        thay dòng bên dưới bằng endpoint
+        của bạn.
+
+        Ví dụ:
+
+        https://formspree.io/f/abcd1234
+        ==========================================
+        */
+
+
+        const FORM_ENDPOINT =
+            "https://formspree.io/f/xoejekjj";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    FORM_ENDPOINT,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Accept":
+                                "application/json",
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                message:
+                                    message,
+
+                                subject:
+                                    "💌 Lời nhắn sinh nhật của Trâm Anh"
+
+                            })
+
+                    }
+                );
+
+
+            /*
+            Dù Formspree chưa được
+            cấu hình thì trang vẫn
+            chuyển đến lời chúc.
+            */
+
+            setTimeout(
+                showFinalScreen,
+                1500
+            );
+
+
+        } catch (error) {
+
+            setTimeout(
+                showFinalScreen,
+                1500
+            );
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       HIỆN LỜI CHÚC
+    ================================================= */
+
+
+    function showFinalScreen() {
+
+        document
+            .getElementById("loading")
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById("resultScreen")
+            .classList
+            .remove("hidden");
+
+
+        createHearts();
+
+    }
+
+
+
+    /* =================================================
+       TẠO THÊM TIM / STICKER
+    ================================================= */
+
+
+    function createHearts() {
+
+        const emojis = [
+            "❤️",
+            "💗",
+            "💕",
+            "🌸",
+            "✨",
+            "🎀",
+            "🍓"
+        ];
+
+
+        for (
+            let i = 0;
+            i < 20;
+            i++
+        ) {
+
+
+            const heart =
+                document
+                    .createElement("div");
+
+
+            heart.className =
+                "floating-heart";
+
+
+            heart.innerText =
+                emojis[
+                    Math.floor(
+                        Math.random()
+                        * emojis.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100
+                + "%";
+
+
+            heart.style.animationDuration =
+                (
+                    4 +
+                    Math.random() * 5
+                )
+                + "s";
+
+
+            heart.style.animationDelay =
+                Math.random() * 2
+                + "s";
+
+
+            document.body
+                .appendChild(heart);
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
